@@ -14,6 +14,8 @@ runs:
   steps:
     - run: echo Hello ${{ inputs.who-to-greet }}.
       shell: bash
+    - run: dist/bin/app ${{ inputs.who-to-greet }}
+      shell: bash
     - id: random-number-generator
       run: echo "::set-output name=task_output::$(dist/bin/app ${{ inputs.who-to-greet }})"
       shell: bash
