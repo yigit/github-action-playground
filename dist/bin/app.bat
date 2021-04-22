@@ -67,7 +67,7 @@ goto fail
 :execute
 @rem Setup the command line
 
-set CLASSPATH=%APP_HOME%\lib\actionsApp-1.0-SNAPSHOT.jar;%APP_HOME%\lib\kotlin-stdlib-1.4.20.jar;%APP_HOME%\lib\kotlin-stdlib-common-1.4.20.jar;%APP_HOME%\lib\annotations-13.0.jar
+set CLASSPATH=%APP_HOME%\lib\actionsApp-1.0-SNAPSHOT.jar;%APP_HOME%\lib\ktor-server-netty-jvm-1.5.3.jar;%APP_HOME%\lib\ktor-server-host-common-jvm-1.5.3.jar;%APP_HOME%\lib\ktor-server-core-jvm-1.5.3.jar;%APP_HOME%\lib\kotlin-stdlib-jdk8-1.4.32.jar;%APP_HOME%\lib\ktor-http-cio-jvm-1.5.3.jar;%APP_HOME%\lib\ktor-http-jvm-1.5.3.jar;%APP_HOME%\lib\ktor-network-jvm-1.5.3.jar;%APP_HOME%\lib\ktor-utils-jvm-1.5.3.jar;%APP_HOME%\lib\kotlin-stdlib-jdk7-1.4.32.jar;%APP_HOME%\lib\kotlin-reflect-1.4.32.jar;%APP_HOME%\lib\kotlinx-coroutines-jdk8-1.4.3-native-mt.jar;%APP_HOME%\lib\ktor-io-jvm-1.5.3.jar;%APP_HOME%\lib\kotlinx-coroutines-core-jvm-1.4.3-native-mt.jar;%APP_HOME%\lib\kotlin-stdlib-1.4.32.jar;%APP_HOME%\lib\kotlin-stdlib-common-1.4.32.jar;%APP_HOME%\lib\annotations-13.0.jar;%APP_HOME%\lib\slf4j-api-1.7.30.jar;%APP_HOME%\lib\config-1.3.1.jar;%APP_HOME%\lib\netty-codec-http2-4.1.54.Final.jar;%APP_HOME%\lib\alpn-api-1.1.3.v20160715.jar;%APP_HOME%\lib\netty-transport-native-kqueue-4.1.54.Final.jar;%APP_HOME%\lib\netty-transport-native-epoll-4.1.54.Final.jar;%APP_HOME%\lib\netty-codec-http-4.1.54.Final.jar;%APP_HOME%\lib\netty-handler-4.1.54.Final.jar;%APP_HOME%\lib\netty-codec-4.1.54.Final.jar;%APP_HOME%\lib\netty-transport-native-unix-common-4.1.54.Final.jar;%APP_HOME%\lib\netty-transport-4.1.54.Final.jar;%APP_HOME%\lib\netty-buffer-4.1.54.Final.jar;%APP_HOME%\lib\netty-resolver-4.1.54.Final.jar;%APP_HOME%\lib\netty-common-4.1.54.Final.jar
 
 
 @rem Execute app

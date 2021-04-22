@@ -14,8 +14,10 @@ runs:
   steps:
     - run: echo Hello ${{ inputs.who-to-greet }}.
       shell: bash
-    - run: ${{ github.action_path }}/dist/bin/app ${{ inputs.who-to-greet }}
+    - run: ${{ github.action_path }}/dist/bin/app ${{ inputs.who-to-greet }} &
       shell: bash
-    - id: random-number-generator
-      run: echo "::set-output name=task_output::$(${{ github.action_path }}/dist/bin/app ${{ inputs.who-to-greet }})"
+  post:
+    - run: curl 0.0.0.0:8123/shutdown
+      shell: bash
+    - run: echo cleanup
       shell: bash

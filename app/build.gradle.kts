@@ -12,6 +12,8 @@ repositories {
 
 dependencies {
     implementation(kotlin("stdlib"))
+    implementation("io.ktor:ktor-server-core:1.5.3")
+    implementation("io.ktor:ktor-server-netty:1.5.3")
 }
 
 application {
