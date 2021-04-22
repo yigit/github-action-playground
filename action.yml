@@ -16,8 +16,3 @@ runs:
       shell: bash
     - run: ${{ github.action_path }}/dist/bin/app ${{ inputs.who-to-greet }} &
       shell: bash
-  post:
-    - run: curl 0.0.0.0:8123/shutdown
-      shell: bash
-    - run: echo cleanup
-      shell: bash
