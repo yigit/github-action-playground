@@ -1,0 +1,21 @@
+name: 'Test Gradle Action'
+description: 'Test something'
+inputs:
+  args:  # id of input
+    description: 'arguments of app'
+    required: true
+    default: 'no arguments'
+outputs:
+  random-number:
+    description: "Random number"
+    value: ${{ steps.random-number-generator.outputs.task_output }}
+runs:
+  using: "composite"
+  steps:
+    - run: echo Hello ${{ inputs.who-to-greet }}.
+      shell: bash
+    - id: random-number-generator
+      run: echo "::set-output name=task_output::$(dist/bin/app ${{ inputs.who-to-greet }})"
+      shell: bash
+    - run: ${{ github.action_path }}/goodbye.sh
+      shell: bash
