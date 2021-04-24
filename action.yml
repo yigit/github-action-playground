@@ -10,9 +10,7 @@ outputs:
     description: "Random number"
     value: ${{ steps.random-number-generator.outputs.task_output }}
 runs:
-  using: "composite"
-  steps:
-    - run: echo Hello ${{ inputs.who-to-greet }}.
-      shell: bash
-    - run: ${{ github.action_path }}/dist/bin/app ${{ inputs.who-to-greet }} &
-      shell: bash
+  using: "docker"
+  image: "Dockerfile"
+  args:
+    - ${{ inputs.args }}
