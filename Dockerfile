@@ -7,5 +7,5 @@ COPY dist /dist
 
 # Code file to execute when the docker container starts up (`entrypoint.sh`)
 #ENTRYPOINT ["/entrypoint.sh"]
-ENTRYPOINT ["/dist/bin/app"]
+ENTRYPOINT ["/dist/bin/app &"]
 #${{ github.action_path }}/dist/bin/app ${{ inputs.who-to-greet }} &
