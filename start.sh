@@ -1,2 +1,2 @@
 #!/bin/bash
-dist/bin/app &
+dist/bin/app
