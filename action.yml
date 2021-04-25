@@ -19,13 +19,16 @@ runs:
   steps:
     - id: action pre
       run: echo starting action
+      shell: bash
     - id: build
       run: docker build -t ${{ github.action_path }}/local-image .
       shell: bash
     - id: action done build
       run: echo done build
+      shell: bash
     - id: run
       run: docker run -dp 8123:8123 --rm -v $(pwd):/github/workspace --workdir /github/workspace local-image
       shell: bash
     - id: action done build
-        run: echo done all
+      run: echo done all
+      shell: bash
