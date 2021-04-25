@@ -18,7 +18,7 @@ runs:
   using: 'composite'
   steps:
     - id: build
-      run: docker build -t local-image g . 
+      run: docker build -t local-image .
       shell: bash
     - id: run
       run: docker run -dp 8123:8123 --rm -v $(pwd):/github/workspace --workdir /github/workspace local-image
