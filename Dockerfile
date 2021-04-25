@@ -9,4 +9,5 @@ COPY start.sh /start.sh
 # Code file to execute when the docker container starts up (`entrypoint.sh`)
 #ENTRYPOINT ["/entrypoint.sh"]
 #ENTRYPOINT ["/start.sh"]
-${{ github.action_path }}/dist/bin/app ${{ inputs.who-to-greet }}
+ENTRYPOINT ["/dist/bin/app"]
+# ${{ github.action_path }}/dist/bin/app ${{ inputs.who-to-greet }}
