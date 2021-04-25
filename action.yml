@@ -17,18 +17,18 @@ outputs:
 runs:
   using: 'composite'
   steps:
-    - id: action pre
+    - id: action_pre
       run: echo starting action
       shell: bash
     - id: build
       run: docker build -t ${{ github.action_path }}/local-image .
       shell: bash
-    - id: action done build
+    - id: action_done_build
       run: echo done build
       shell: bash
     - id: run
       run: docker run -dp 8123:8123 --rm -v $(pwd):/github/workspace --workdir /github/workspace local-image
       shell: bash
-    - id: action done build
+    - id: action_done_all
       run: echo done all
       shell: bash
