@@ -10,5 +10,5 @@ COPY start.sh /start.sh
 #ENTRYPOINT ["/entrypoint.sh"]
 #ENTRYPOINT ["/start.sh"]
 #ENTRYPOINT ["/dist/bin/app"]
-CMD ["/dist/bin/app &"]
+CMD ["/dist/bin/app"]
 # ${{ github.action_path }}/dist/bin/app ${{ inputs.who-to-greet }}
