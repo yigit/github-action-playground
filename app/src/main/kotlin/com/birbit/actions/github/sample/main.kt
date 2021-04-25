@@ -13,6 +13,7 @@ fun main(args: Array<String>) {
         }
         routing {
             get("/") {
+                println("RECEIVED QUERY ${call.request.queryParameters}")
                 val response = call.parameters.entries().joinToString(" ") {
                     "${it.key}-${it.value}"
                 }
