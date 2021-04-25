@@ -21,7 +21,7 @@ runs:
       run: echo starting action
       shell: bash
     - id: build
-      run: docker build -t local-image -f ${{ github.action_path }}/Dockerfile
+      run: docker build -t local-image ${{ github.action_path }}/.
       shell: bash
     - id: action_done_build
       run: echo done build
