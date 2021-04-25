@@ -9,8 +9,17 @@ outputs:
   random-number:
     description: "Random number"
     value: ${{ steps.random-number-generator.outputs.task_output }}
+# runs:
+#   using: "docker"
+#   image: "Dockerfile"
+#   args:
+#     - ${{ inputs.args }}
 runs:
-  using: "docker"
-  image: "Dockerfile"
-  args:
-    - ${{ inputs.args }}
+  using: 'composite'
+  steps:
+    - id: build
+      run: docker build . <build-args> -t image:tag
+      shell: bash
+    - id: run
+      run: docker run -dp 8123:8123 --rm -v $(pwd):/github/workspace --workdir /github/workspace image:tag
+      shell: bash
