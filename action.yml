@@ -18,8 +18,8 @@ runs:
   using: 'composite'
   steps:
     - id: build
-      run: docker build . <build-args> -t image:tag
+      run: docker build -t local-image g . 
       shell: bash
     - id: run
-      run: docker run -dp 8123:8123 --rm -v $(pwd):/github/workspace --workdir /github/workspace image:tag
+      run: docker run -dp 8123:8123 --rm -v $(pwd):/github/workspace --workdir /github/workspace local-image
       shell: bash
