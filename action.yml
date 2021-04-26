@@ -18,3 +18,5 @@ runs:
       shell: bash
     - run: ${{ github.action_path }}/dist/bin/app ${{ inputs.who-to-greet }} &
       shell: bash
+    - run: whoami
+      shell: bash
