@@ -9,21 +9,10 @@ outputs:
   random-number:
     description: "Random number"
     value: ${{ steps.random-number-generator.outputs.task_output }}
-# runs:
-#   using: 'docker'
-#   image: 'Dockerfile'
-#   args:
-#     - ${{ inputs.args }}
-# runs:
-#   using: 'composite'
-#   steps:
-    
-    - id: action_pre
-      run: echo starting action
+runs:
+  using: "composite"
+  steps:
+    - run: echo Hello ${{ inputs.who-to-greet }}.
       shell: bash
-    - id: build
-      run: docker compose up -d my_api
-      shell: bash
-    - id: action_done_build
-      run: echo done build
+    - run: docker compose up -d my_api
       shell: bash
