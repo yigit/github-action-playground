@@ -50,5 +50,7 @@ runs:
       run: docker run -dp 8123:8123 --rm -v $(pwd):/github/workspace --workdir /github/workspace local-image
       shell: bash
     - id: action_done_all
+      container:
+        ports: 8123:8123
       run: echo done all
       shell: bash
