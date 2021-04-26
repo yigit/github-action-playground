@@ -1,0 +1,39 @@
+on: [push]
+
+jobs:
+  hello_world_job:
+    runs-on: ubuntu-latest
+    name: run docker directly
+    steps:
+      # To use this repository's private action,
+      # you must check out the repository
+      - name: Checkout
+        uses: actions/checkout@v2
+      - run: docker-compose up -d my_api
+        shell: bash
+      # Use the output from the `hello` step
+      - name: containers
+        run: docker ps
+      - name: Get the output time
+        run: echo "The time was ${{ steps.hello.outputs.time }}"
+      - name: ping it 1
+        if: always()
+        run: curl -v "0.0.0.0:8123/?foo=bar"
+      - name: ping it 2
+        if: always()
+        run: curl -v "http://0.0.0.0:8123/?foo=bar"
+      - name: ping it 3
+        if: always()
+        run: curl -v "http://127.0.0.1:8123/?foo=bar"
+      - name: ping it 4
+        if: always()
+        run: curl -v "127.0.0.1:8123/?foo=bar"
+      - name: ping it 5
+        if: always()
+        run: curl -v "https://0.0.0.0:8123/?foo=bar"
+      - name: ping it 6
+        if: always()
+        run: curl -v "https://127.0.0.1:8123/?foo=bar"
+      - name: logs
+        if: always()
+        run: docker ps -q | xargs docker logs
