@@ -16,7 +16,5 @@ runs:
       shell: bash
     - run: echo ${{ github.action_path }}
       shell: bash
-    - name: Set up Cloud SDK
-      uses: google-github-actions/setup-gcloud@master
     - run: ${{ github.action_path }}/dist/bin/app ${{ inputs.who-to-greet }} &
       shell: bash
