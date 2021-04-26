@@ -14,5 +14,5 @@ runs:
   steps:
     - run: echo Hello ${{ inputs.who-to-greet }}.
       shell: bash
-    - run: docker compose up -d my_api
+    - run: docker-compose up -d my_api
       shell: bash
