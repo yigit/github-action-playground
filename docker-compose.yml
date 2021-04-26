@@ -3,4 +3,4 @@ services:
   my_api:
     build: .
     ports:
-      - "8123:8123"
+      - 8123:8123
