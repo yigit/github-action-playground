@@ -10,19 +10,33 @@ outputs:
     description: "Random number"
     value: ${{ steps.random-number-generator.outputs.task_output }}
 # runs:
-#   using: "docker"
-#   image: "Dockerfile"
+#   using: 'docker'
+#   image: 'Dockerfile'
 #   args:
 #     - ${{ inputs.args }}
+# runs:
+#   using: 'composite'
+#   steps:
+    
+#     - id: action_pre
+#       run: echo starting action
+#       shell: bash
+#     - id: build
+#       run: docker build -t local-image ${{ github.action_path }}/.
+#       shell: bash
+#     - id: action_done_build
+#       run: echo done build
+#       shell: bash
+#     - id: run
+#       run: docker run -dp 8123:8123 --rm -v $(pwd):/github/workspace --workdir /github/workspace local-image
+#       shell: bash
+#     - id: action_done_all
+#       run: echo done all
+#       shell: bash
 runs:
   using: 'composite'
-  services: 
-    nginx:
-    image: nginx
-    # Map port 8080 on the Docker host to port 80 on the nginx container
-    ports:
-      - 8080:80
   steps:
+
     - id: action_pre
       run: echo starting action
       shell: bash
