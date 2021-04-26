@@ -1,0 +1,6 @@
+version: "3.9"  # optional since v1.27.0
+services:
+  my_api:
+    build: .
+    ports:
+      - "8123:8123"
