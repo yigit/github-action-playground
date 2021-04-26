@@ -16,6 +16,12 @@ outputs:
 #     - ${{ inputs.args }}
 runs:
   using: 'composite'
+  services: 
+    nginx:
+    image: nginx
+    # Map port 8080 on the Docker host to port 80 on the nginx container
+    ports:
+      - 8080:80
   steps:
     - id: action_pre
       run: echo starting action
