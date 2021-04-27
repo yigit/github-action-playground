@@ -13,7 +13,7 @@ jobs:
         uses: ./ # Uses an action in the root directory
         id: hello
         with:
-          who-to-greet: 'Mona the Octocat'
+          docker_network: ${{ job.container.network }}
       # Use the output from the `hello` step
       - name: containers
         run: docker ps
