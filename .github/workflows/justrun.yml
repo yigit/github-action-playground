@@ -10,7 +10,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - id: build
-        run: docker build -t my-local-image ${{ github.action_path }}/.
+        run: docker build -t my-local-image .
         shell: bash
       - run:  docker run -dp 8080:8080 --rm my-local-image
         shell: bash

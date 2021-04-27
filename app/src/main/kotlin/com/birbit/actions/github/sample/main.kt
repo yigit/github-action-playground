@@ -7,7 +7,11 @@ import io.ktor.server.engine.*
 import io.ktor.server.netty.*
 fun main(args: Array<String>) {
     println("hello ${args.joinToString(",")}")
-    embeddedServer(Netty, port = 8080) {
+    embeddedServer(Netty, port = 8080,
+        host = "0.0.0.0",
+        configure = {
+
+        }) {
         install(DefaultHeaders)
 //        install(ShutDownUrl.ApplicationCallFeature) {
 //            shutDownUrl = "/shutdown"
