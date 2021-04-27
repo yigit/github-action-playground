@@ -28,12 +28,9 @@ jobs:
       - name: ping it 4
         if: always()
         run: curl -v "127.0.0.1:8123/?foo=bar"
-      - name: ping it 5
+      - name: containers2
         if: always()
-        run: curl -v "https://0.0.0.0:8123/?foo=bar"
-      - name: ping it 6
-        if: always()
-        run: curl -v "https://127.0.0.1:8123/?foo=bar"
+        run: docker ps
       - name: logs
         if: always()
         run: docker ps -q | xargs docker logs
