@@ -18,7 +18,7 @@ dependencies {
 
 application {
     applicationName = "app"
-    mainClass.set("com.birbit.actions.github.sample.MainKt")
+    mainClass.set("io.ktor.server.netty.EngineMain")
 }
 
 tasks.named<Sync>("installDist").configure {

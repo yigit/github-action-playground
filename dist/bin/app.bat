@@ -71,7 +71,7 @@ set CLASSPATH=%APP_HOME%\lib\actionsApp-1.0-SNAPSHOT.jar;%APP_HOME%\lib\ktor-ser
 
 
 @rem Execute app
-"%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %APP_OPTS%  -classpath "%CLASSPATH%" com.birbit.actions.github.sample.MainKt %*
+"%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %APP_OPTS%  -classpath "%CLASSPATH%" io.ktor.server.netty.EngineMain %*
 
 :end
 @rem End local scope for the variables with windows NT shell

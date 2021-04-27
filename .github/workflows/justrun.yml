@@ -18,16 +18,16 @@ jobs:
         run: echo "The time was ${{ steps.hello.outputs.time }}"
       - name: ping it 1
         if: always()
-        run: curl -v "0.0.0.0:8123/?foo=bar"
+        run: curl -v "0.0.0.0:8080/?foo=bar"
       - name: ping it 2
         if: always()
-        run: curl -v "http://0.0.0.0:8123/?foo=bar"
+        run: curl -v "http://0.0.0.0:8080/?foo=bar"
       - name: ping it 3
         if: always()
-        run: curl -v "http://127.0.0.1:8123/?foo=bar"
+        run: curl -v "http://127.0.0.1:8080/?foo=bar"
       - name: ping it 4
         if: always()
-        run: curl -v "127.0.0.1:8123/?foo=bar"
+        run: curl -v "127.0.0.1:8080/?foo=bar"
       - name: containers2
         if: always()
         run: docker ps
