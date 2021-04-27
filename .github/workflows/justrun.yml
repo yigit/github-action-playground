@@ -28,6 +28,15 @@ jobs:
       - name: ping it 4
         if: always()
         run: curl -v "127.0.0.1:8080/?foo=bar"
+      - name: ping it 5
+        if: always()
+        run: curl -v "http://localhost:8080/?foo=bar"
+      - name: ping it 6
+        if: always()
+        run: curl -v "localhost:8080/?foo=bar"
+      - name: ping it 7
+        if: always()
+        run: curl -v "localhost:8080"
       - name: containers2
         if: always()
         run: docker ps
