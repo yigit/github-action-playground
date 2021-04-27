@@ -4,11 +4,10 @@ import io.ktor.features.DefaultHeaders
 import io.ktor.response.*
 import io.ktor.routing.*
 import io.ktor.server.engine.*
-import io.ktor.server.jetty.Jetty
 import io.ktor.server.netty.*
 fun main(args: Array<String>) {
     println("hello ${args.joinToString(",")}")
-    embeddedServer(Jetty, port = 8080) {
+    embeddedServer(Netty, port = 8080) {
         install(DefaultHeaders)
 //        install(ShutDownUrl.ApplicationCallFeature) {
 //            shutDownUrl = "/shutdown"
