@@ -8,7 +8,7 @@ import io.ktor.server.engine.*
 import io.ktor.server.netty.*
 
 fun Application.main() {
-
+    println("START SERVER")
     install(DefaultHeaders)
 //        install(ShutDownUrl.ApplicationCallFeature) {
 //            shutDownUrl = "/shutdown"
