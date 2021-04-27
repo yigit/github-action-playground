@@ -12,7 +12,7 @@ jobs:
       - id: build
         run: docker build -t my-local-image .
         shell: bash
-      - run:  docker run --network host -d --rm my-local-image
+      - run:  docker run -dp 8080:8080 --rm my-local-image
         shell: bash
       # Use the output from the `hello` step
       - name: containers
