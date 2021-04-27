@@ -17,5 +17,5 @@ runs:
     - id: build
       run: docker build -t my-local-image ${{ github.action_path }}/.
       shell: bash
-    - run:  docker run -d --name my-local-server --network "${{ job.services.network }}" -p 0.0.0.0:8080:8080 --rm my-local-image
+    - run:  docker run -d --name my-local-server --network "${{ job.container.network }}" -p 0.0.0.0:8080:8080 --rm my-local-image
       shell: bash
