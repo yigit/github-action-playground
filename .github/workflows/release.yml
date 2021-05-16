@@ -1,11 +1,9 @@
 on:
-  push:
-    tags:
-      - "v*"
+  push: "release/v*"
 
 jobs:
-  tagged-release:
-    name: "Tagged Release"
+  create-dist:
+    name: "Create Dist"
     runs-on: ubuntu-latest
 
     steps:
@@ -15,18 +13,6 @@ jobs:
         with:
           java-version: '11'
           distribution: 'adopt'
-      - uses: eskatos/gradle-command-action@v1
-        with: 
-          build-root-directory: app
-          wrapper-directory: app
-          wrapper-cache-enabled: true
-          dependencies-cache-enabled: true
-          configuration-cache-enabled: true
-          arguments: installDist
-      - uses: "marvinpinto/action-automatic-releases@latest"
-        with:
-          repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          prerelease: false
-          files: |
-            dist
-            action.yml
+      - name: Release
+        run: ./release.sh
+        shell: bash
