@@ -17,6 +17,7 @@ else
 fi
 
 git checkout --orphan $VERSION
+git restore .
 git add dist
 git add action.yml
 git add LICENSE
