@@ -1,5 +1,6 @@
 on:
-  push: "release/v*"
+  push: 
+    branches: "release/v*"
 
 jobs:
   create-dist:
