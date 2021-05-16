@@ -17,8 +17,8 @@ else
 fi
 
 git checkout --orphan $VERSION
-echo "restoring"
-git restore .
+echo "removing all files"
+git rm --cached -r .
 git status
 echo "add dist"
 git add dist
