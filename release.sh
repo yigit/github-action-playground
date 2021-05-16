@@ -17,10 +17,18 @@ else
 fi
 
 git checkout --orphan $VERSION
+echo "restoring"
 git restore .
+git status
+echo "add dist"
 git add dist
+git status
+echo "add action.yml"
 git add action.yml
+git status
+echo "add license"
 git add LICENSE
+git status
 git commit -m "Release $VERSION from $GITHUB_SHA"
-git push origin $VERSION
+git push origin $VERSION -f
 
