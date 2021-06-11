@@ -1,10 +1,11 @@
 #!/bin/bash
+set -x
 #echo "event path: $GITHUB_EVENT_PATH"
 #echo "event path contents:"
-#COMPARE=$(jq '.compare' $GITHUB_EVENT_PATH)
+# COMPARE=$(jq '.compare' $GITHUB_EVENT_PATH)
 #echo "compare url: $COMPARE"
 # api.github.com/repos
-#COMPARE_API=$(echo $COMPARE | sed 's/github.com\//api.github.com\/repos\//g'| sed 's/"//g')
+COMPARE_API=$(echo $COMPARE | sed 's/github.com\//api.github.com\/repos\//g'| sed 's/"//g')
 #echo "compare API url: $COMPARE_API"
 #COMPARE_RESPONSE=$(curl -H "Accept: application/vnd.github.v3+json" $COMPARE_API)
 COMPARE_RESPONSE=$(cat compare.json)
@@ -25,4 +26,8 @@ echo "changed files: $CHANGED_FILES"
 # echo "done listing files"
 # echo "line delimited files: $LINE_DELIMITED_FILES"
 echo "set output:"
-echo "::set-output name=files::'$CHANGED_FILES'"
+echo "::set-output name=files::$CHANGED_FILES"
+
+echo "changed files: $CHANGED_FILES"
+KTLINT_FILES=`echo "$CHANGED_FILES" | sed 's|[^ ]* *|--file=${{ github.workspace }}/&|g' | grep -v "*.txt"`
+echo "KTLINT_FILES: $KTLINT_FILES"
