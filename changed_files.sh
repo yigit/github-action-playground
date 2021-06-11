@@ -17,4 +17,4 @@ LINE_DELIMITED_FILES=$(IFS='\n'; echo "${CHANGED_FILES[*]}" )
 #   echo $file | sed 's/"//g' 
 # done
 echo $LINE_DELIMITED_FILES
-echo "::set-output name=files::$CHANGED_FILES"
+echo "::set-output name=files::$LINE_DELIMITED_FILES"
