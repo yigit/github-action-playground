@@ -1,5 +1,6 @@
 #!/bin/bash
 echo "event path: $GITHUB_EVENT_PATH"
+echo $GITHUB_EVENT_PATH
 COMPARE=$(jq '.compare' $GITHUB_EVENT_PATH)
 echo "compare url: $COMPARE"
 # api.github.com/repos
