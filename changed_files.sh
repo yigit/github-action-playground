@@ -2,7 +2,7 @@
 set -x
 #echo "event path: $GITHUB_EVENT_PATH"
 #echo "event path contents:"
-# COMPARE=$(jq '.compare' $GITHUB_EVENT_PATH)
+COMPARE=$(jq '.compare' $GITHUB_EVENT_PATH)
 #echo "compare url: $COMPARE"
 # api.github.com/repos
 COMPARE_API=$(echo $COMPARE | sed 's/github.com\//api.github.com\/repos\//g'| sed 's/"//g')
