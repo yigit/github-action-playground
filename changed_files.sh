@@ -11,6 +11,7 @@ echo "compare response: $COMPARE_RESPONSE"
 # statuses we are interested in: added, modified, renamed
 CHANGED_FILES=$(echo $COMPARE_RESPONSE | jq -r '.files | .[] | select(.status != "removed") | .filename')
 echo "changed files: $CHANGED_FILES"
+echo "changed files expanded: $CHANGED_FILES[*]"
 LINE_DELIMITED_FILES=$(IFS='\n'; echo "${CHANGED_FILES[*]}" )
 echo "listing files"
 for file in "${CHANGED_FILES[@]}"
@@ -21,5 +22,5 @@ do
 done
 echo "done listing files"
 echo "line delimited files: $LINE_DELIMITED_FILES"
-
+echo "set output:"
 echo "::set-output name=files::$LINE_DELIMITED_FILES"
