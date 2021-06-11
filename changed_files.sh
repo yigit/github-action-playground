@@ -1,5 +1,5 @@
 #!/bin/bash
-set -x
+#set -x
 #echo "event path: $GITHUB_EVENT_PATH"
 #echo "event path contents:"
 COMPARE=$(jq '.compare' $GITHUB_EVENT_PATH)
@@ -11,7 +11,7 @@ COMPARE_RESPONSE=$(curl -H "Accept: application/vnd.github.v3+json" $COMPARE_API
 # COMPARE_RESPONSE=$(cat compare.json)
 #echo "compare response: $COMPARE_RESPONSE"
 # statuses we are interested in: added, modified, renamed
-CHANGED_FILES=$(echo $COMPARE_RESPONSE | jq -r '.files | .[] | select(.status != "removed") | .filename')
+CHANGED_FILES=$(echo $COMPARE_RESPONSE | jq -r '.files | .[] | select(.status != "removed") | .filename' | tr '\r\n' ' ')
 echo "changed files: $CHANGED_FILES"
 # echo "changed files expanded: $CHANGED_FILES"
 # LINE_DELIMITED_FILES=$(IFS=' '; echo "${CHANGED_FILES[*]}" )
@@ -25,9 +25,15 @@ echo "changed files: $CHANGED_FILES"
 # done
 # echo "done listing files"
 # echo "line delimited files: $LINE_DELIMITED_FILES"
-echo "set output:"
+# echo "set output:"
 echo "::set-output name=files::$CHANGED_FILES"
-
-echo "changed files: $CHANGED_FILES"
-KTLINT_FILES=`echo "$CHANGED_FILES" | sed 's|[^ ]* *|--file=${{ github.workspace }}/&|g' | grep -v "*.txt"`
-echo "KTLINT_FILES: $KTLINT_FILES"
+# NO_NEW_LINES=$(echo $CHANGED_FILES | tr '\r\n' ' ')
+# echo "---------"
+# echo -e "${CHANGED_FILES/'\n'/ }"
+# echo "---------"
+# echo $NO_NEW_LINES
+# echo "---"
+# echo "changed files elgnth ${#CHANGED_FILES}"
+# echo "changed files: $CHANGED_FILES"
+# KTLINT_FILES=`echo -e "${CHANGED_FILES/\n/ }" | sed 's|[^ ]* *|--file=${{ github.workspace }}/&|g' | grep -v "*.txt"`
+# echo "KTLINT_FILES: $KTLINT_FILES"
