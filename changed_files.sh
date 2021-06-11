@@ -6,8 +6,8 @@
 # api.github.com/repos
 # COMPARE_API=$(echo $COMPARE | sed 's/github.com\//api.github.com\/repos\//g'| sed 's/"//g')
 #echo "compare API url: $COMPARE_API"
-# COMPARE_RESPONSE=$(curl -H "Accept: application/vnd.github.v3+json" $COMPARE_API)
-COMPARE_RESPONSE=$(cat compare.json)
+COMPARE_RESPONSE=$(curl -H "Accept: application/vnd.github.v3+json" $COMPARE_API)
+# COMPARE_RESPONSE=$(cat compare.json)
 echo "compare response: $COMPARE_RESPONSE"
 # statuses we are interested in: added, modified, renamed
 CHANGED_FILES=`echo $COMPARE_RESPONSE | jq -r '.files | .[] | select(.status != "removed") | .filename'`
