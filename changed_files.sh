@@ -11,10 +11,11 @@ COMPARE_RESPONSE=$(curl -H "Accept: application/vnd.github.v3+json" $COMPARE_API
 # statuses we are interested in: added, modified, renamed
 CHANGED_FILES=$(echo $COMPARE_RESPONSE | jq -r '.files | .[] | select(.status != "removed") | .filename')
 LINE_DELIMITED_FILES=$(IFS='\n'; echo "${CHANGED_FILES[*]}" )
-# for file in "${CHANGED_FILES[@]}"
-# do
-#   # remove quotes
-#   echo $file | sed 's/"//g' 
-# done
+for file in "${LINE_DELIMITED_FILES[@]}"
+do
+  # remove quotes
+  echo "file:"
+  echo $file | sed 's/"//g' 
+done
 echo $LINE_DELIMITED_FILES
 echo "::set-output name=files::$LINE_DELIMITED_FILES"
