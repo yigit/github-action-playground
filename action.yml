@@ -1,21 +1,17 @@
-name: 'Test Gradle Action'
-description: 'Test something'
-inputs:
-  args:  # id of input
-    description: 'arguments of app'
-    required: true
-    default: 'no arguments'
+
+name: "Changed files detection"
+description: "Find the added and modified files due to a github event"
 outputs:
-  random-number:
-    description: "Random number"
-    value: ${{ steps.random-number-generator.outputs.task_output }}
+  files:
+    description: "Paths of all added or modified files"
+    value: ${{ steps.changed-files.outputs.files }}
 runs:
   using: "composite"
   steps:
-    shell: bash
-    id: changed-files
-    run: |
-      set -x
-      CHANGED_FILES=`${{ github.action_path }}/changed_files.sh`
-      echo "::set-output name=files::$CHANGED_FILES"
-    
+    - name: "Get added and modified files"
+      shell: bash
+      id: changed-files
+      run: |
+        set -x
+        CHANGED_FILES=`${{ github.action_path }}/changed_files.sh`
+        echo "::set-output name=files::$CHANGED_FILES"
