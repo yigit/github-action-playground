@@ -12,12 +12,13 @@ echo "compare response: $COMPARE_RESPONSE"
 CHANGED_FILES=$(echo $COMPARE_RESPONSE | jq '.files | .[] | select(.status != "removed") | .filename')
 LINE_DELIMITED_FILES=$(IFS='\n'; echo "${CHANGED_FILES[*]}" )
 echo "listing files"
-for file in "${LINE_DELIMITED_FILES[@]}"
+for file in "${CHANGED_FILES[@]}"
 do
   # remove quotes
-  echo "file:"
+  echo "file: $file"
   echo $file | sed 's/"//g' 
 done
 echo "done listing files"
 echo $LINE_DELIMITED_FILES
+
 echo "::set-output name=files::$LINE_DELIMITED_FILES"
