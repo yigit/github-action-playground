@@ -14,9 +14,4 @@ runs:
       run: |
         set -x
         ${{ github.action_path }}/changed_files.sh
-        # COMPARE=$(jq '.compare' $GITHUB_EVENT_PATH)
-        # COMPARE_API=$(echo $COMPARE | sed 's/github.com\//api.github.com\/repos\//g'| sed 's/"//g')
-        # COMPARE_RESPONSE=$(curl -H "Accept: application/vnd.github.v3+json" $COMPARE_API)
-        # CHANGED_FILES=$(echo $COMPARE_RESPONSE | jq -r '.files | .[] | select(.status != "removed") | .filename')
-        # echo "::set-output name=files::$CHANGED_FILES"
 
