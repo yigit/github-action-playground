@@ -9,5 +9,10 @@ echo "compare API url: $COMPARE_API"
 COMPARE_RESPONSE=$(curl -H "Accept: application/vnd.github.v3+json" $COMPARE_API)
 echo "compare response: $COMPARE_RESPONSE"
 # statuses we are interested in: added, modified, renamed
-CHANGED_FILES=$(echo $COMPARE_RESPONSE | jq '.files | .[] | select(.status != "removed") | .filename') | sed 's/"//g'
+CHANGED_FILES=$(echo $COMPARE_RESPONSE | jq '.files | .[] | select(.status != "removed") | .filename')
 echo $CHANGED_FILES
+for file in "${CHANGED_FILES[@]}"
+do
+  # remove quotes
+  echo $file | sed 's/"//g' 
+done
