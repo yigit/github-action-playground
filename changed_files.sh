@@ -15,4 +15,4 @@ do
   # remove quotes
   echo $file | sed 's/"//g' 
 done
-#echo "::set-output name=files::$CHANGED_FILES"
+echo "::set-output name=files::$CHANGED_FILES"
