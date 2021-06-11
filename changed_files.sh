@@ -1,10 +1,10 @@
 #!/bin/bash
 #echo "event path: $GITHUB_EVENT_PATH"
 #echo "event path contents:"
-# COMPARE=$(jq '.compare' $GITHUB_EVENT_PATH)
+COMPARE=$(jq '.compare' $GITHUB_EVENT_PATH)
 #echo "compare url: $COMPARE"
 # api.github.com/repos
-# COMPARE_API=$(echo $COMPARE | sed 's/github.com\//api.github.com\/repos\//g'| sed 's/"//g')
+COMPARE_API=$(echo $COMPARE | sed 's/github.com\//api.github.com\/repos\//g'| sed 's/"//g')
 #echo "compare API url: $COMPARE_API"
 COMPARE_RESPONSE=$(curl -H "Accept: application/vnd.github.v3+json" $COMPARE_API)
 # COMPARE_RESPONSE=$(cat compare.json)
