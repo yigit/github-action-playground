@@ -12,5 +12,8 @@ outputs:
 runs:
   using: "composite"
   steps:
-    - run: ${{ github.action_path }}/changed_files.sh
-      shell: bash
+    - run: |
+      set -x
+      CHANGED_FILES=`${{ github.action_path }}/changed_files.sh`
+      echo "::set-output name=files::$CHANGED_FILES"
+    shell: bash
